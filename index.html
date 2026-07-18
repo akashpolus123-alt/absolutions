@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AbSolutions | Web Development & AI Automation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <h2>AbSolutions</h2>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Professional Web Development<br>& AI Automation</h1>
+        <p>We create modern websites, AI chatbots and smart business automation solutions that help your business grow faster.</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Get Free Quote</a>
+            <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>We provide high-quality digital solutions to scale your business.</p>
+    </div>
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Web Development</h3>
+            <p>Modern, fast, and fully responsive websites tailored to your business needs using HTML, CSS, and modern framework practices.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🤖</div>
+            <h3>AI Automation</h3>
+            <p>Smart Gemini AI chatbots integration and custom workflow automations to handle your customer support 24/7 seamlessly.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Graphics Design</h3>
+            <p>Eye-catching digital layouts, clean web interfaces, and high-converting graphics designed to elevate your brand identity.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio-section">
+    <div class="section-title">
+        <h2>Our Portfolio</h2>
+        <p>Recent projects delivered successfully to our global clients.</p>
+    </div>
+    <div class="portfolio-container">
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" alt="E-Commerce Platform" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>E-Commerce Platform</h3>
+                <p>Web Development</p>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" alt="Custom AI Support Bot" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>Custom AI Support Bot</h3>
+                <p>AI Automation</p>
+            </div>
+        </div>
+        <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" alt="Corporate Branding" class="portfolio-img">
+            <div class="portfolio-info">
+                <h3>Corporate Branding</h3>
+                <p>Digital Graphic Design</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="about-content">
+        <h2>About AbSolutions</h2>
+        <p>Welcome to AbSolutions! We are a forward-thinking digital agency specialized in crafting premium front-end layouts, robust web applications, and smart AI chatbot integrations.</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="section-title">
+        <h2>Contact Us</h2>
+        <p>Have a project in mind? Let's connect and build something extraordinary.</p>
+    </div>
+    <form class="contact-form" action="https://formspree.io/f/xrenpjgy" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+</section>
+
+<!-- Floating AI Chatbot Container -->
+<div id="ai-chatbot-container">
+    <div id="chatbot-bubble">🤖</div>
+    <div id="chatbot-window" class="hidden">
+        <div id="chatbot-header">
+            <h4>AbSolutions Bot</h4>
+            <span id="close-chatbot">&times;</span>
+        </div>
+        <div id="chatbot-messages">
+            <div class="message bot-message">Hello! How can I help you today?</div>
+        </div>
+        <div id="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Type a message...">
+            <button id="chatbot-send-btn">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
