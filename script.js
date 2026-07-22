@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
   const chatbotWindow = document.getElementById("chatbot-window");
   const closeBtn = document.getElementById("close-chatbot");
   const sendBtn = document.getElementById("chatbot-send-btn");
@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const messagesContainer = document.getElementById("chatbot-messages");
   const floatingActions = document.getElementById("floating-actions");
 
-  // چیٹ بوٹ اوپن اور کلوز لاجک
+  // Chatbot Open/Close Toggle
   if (floatingActions) {
-    floatingActions.addEventListener("click", () => {
+    floatingActions.addEventListener("click", function () {
       if (!chatbotWindow) return;
       if (chatbotWindow.style.display === "none" || chatbotWindow.style.display === "") {
         chatbotWindow.style.display = "flex";
@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // کلوز (Cross) بٹن
+  // Close Button
   if (closeBtn) {
-    closeBtn.addEventListener("click", (e) => {
+    closeBtn.addEventListener("click", function (e) {
       e.stopPropagation();
       if (chatbotWindow) chatbotWindow.style.display = "none";
     });
   }
 
-  // میسج بھیجنے کا فنکشن
+  // Send Message Logic
   async function sendMessage() {
     if (!inputField) return;
     const userText = inputField.value.trim();
@@ -53,9 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Append Message Function
   function appendMessage(text, className) {
     const msgDiv = document.createElement("div");
-    msgDiv.className = msg {className};
+    msgDiv.className = "msg " + className;
     msgDiv.innerText = text;
     if (messagesContainer) {
       messagesContainer.appendChild(msgDiv);
@@ -64,12 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return msgDiv;
   }
 
+  // Event Listeners
   if (sendBtn) {
     sendBtn.addEventListener("click", sendMessage);
   }
 
   if (inputField) {
-    inputField.addEventListener("keypress", (e) => {
+    inputField.addEventListener("keypress", function (e) {
       if (e.key === "Enter") sendMessage();
     });
   }
