@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 2. Chatbot Window Toggle (Open/Close) Logic
+    // 2. Chatbot Window Toggle Logic
     // ==========================================
     const chatbotBubble = document.getElementById('chatbot-bubble');
     const chatbotWindow = document.getElementById('chatbot-window');
@@ -39,43 +39,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================
-    // 3. REAL AI CHATBOT INTEGRATION (Gemini API)
+    // 3. AI CHATBOT INTEGRATION (Gemini API)
     // ==========================================
     const chatInput = document.getElementById('chatbot-input'); 
     const sendChatBtn = document.getElementById('chatbot-send-btn');   
     const chatbox = document.getElementById('chatbot-messages');
 
-    const API_KEY = "AQ.Ab8RN6KbEpaOR8fvHD094_pZYNrS93twJcDCvIG1PhV7BklN6A"; 
+    // APNI ASLI API KEY YAHAN PASTE KAREIN:
+    const API_KEY = "AAP_KI_GEMINI_API_KEY_YAHAN_RAKHEIN"; 
 
     const createChatLi = (message, className) => {
         const chatLi = document.createElement("div");
         chatLi.className = message ${className};
         chatLi.textContent = message;
         return chatLi;
-    }
+    };
 
     const generateResponse = async (incomingChatLi, userMessage) => {
-        const API_URL = https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY};
+        const API_URL = https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY};
 
         try {
             const response = await fetch(API_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: userMessage }] }]
+                    contents: [{
+                        parts: [{
+                            text: You are an AI assistant for AbSolutions, a web development & AI automation agency. Reply in short and professional manner: ${userMessage}
+                        }]
+                    }]
                 })
             });
 
             const data = await response.json();
-            if (!response.ok) throw new Error(data.error?.message || "API Error");
             
-            incomingChatLi.textContent = data.candidates[0].content.parts[0].text;
+            if (!response.ok) {
+                throw new Error(data.error?.message || "API Key or Quota Error");
+            }
+            
+            if (data.candidates && data.candidates[0].content.parts[0].text) {
+                incomingChatLi.textContent = data.candidates[0].content.parts[0].text;
+            } else {
+                incomingChatLi.textContent = "Sorry, I couldn't process that.";
+            }
         } catch (error) {
-            incomingChatLi.textContent = "Oops! Something went wrong. Please try again.";
-            console.error(error);
+            console.error("Chatbot Error:", error);
+            incomingChatLi.textContent = "API Key Error / Connection Failed. Please check your AI Studio key.";
         }
+        
         chatbox.scrollTop = chatbox.scrollHeight;
-    }
+    };
 
     const handleChat = () => {
         const userMessage = chatInput.value.trim();
@@ -91,13 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
             chatbox.appendChild(incomingChatLi);
             chatbox.scrollTop = chatbox.scrollHeight;
             generateResponse(incomingChatLi, userMessage);
-        }, 600);
-    }
+        }, 300);
+    };
 
-    if(sendChatBtn) sendChatBtn.addEventListener("click", handleChat);
-    if(chatInput) {
+    if (sendChatBtn) sendChatBtn.addEventListener("click", handleChat);
+    if (chatInput) {
         chatInput.addEventListener("keydown", (e) => {
-            if(e.key === "Enter") {
+            if (e.key === "Enter") {
                 e.preventDefault();
                 handleChat();
             }
